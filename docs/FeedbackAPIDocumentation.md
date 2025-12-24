@@ -177,7 +177,7 @@ The API provides comprehensive error handling:
 
 ### Submitting Feedback
 ```bash
-curl -X POST http://localhost:5000/api/feedback/submit \
+curl -X POST http://localhost:5008/api/feedback/submit \
   -H "Content-Type: application/json" \
   -d '{
     "name": "John Doe",
@@ -190,7 +190,7 @@ curl -X POST http://localhost:5000/api/feedback/submit \
 
 ### Retrieving Feedback (Admin)
 ```bash
-curl -X GET "http://localhost:5000/api/feedback?page=1&limit=10&status=pending" \
+curl -X GET "http://localhost:5008/api/feedback?page=1&limit=10&status=pending" \
   -H "Authorization: Bearer your_jwt_token_here"
 ```
 

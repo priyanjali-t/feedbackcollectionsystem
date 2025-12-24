@@ -17,11 +17,11 @@ npm install
 Create a `.env` file in the root directory with the following content:
 
 ```env
-PORT=5000
+PORT=5008
 MONGODB_URI=mongodb://localhost:27017/feedback_system
 JWT_SECRET=your_very_secure_jwt_secret_key_here_change_this_to_a_long_random_string_for_production
 JWT_EXPIRES_IN=24h
-ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5000
+ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5008,http://localhost:5000
 NODE_ENV=development
 ```
 
@@ -42,9 +42,9 @@ npm start
 ```
 
 ### Step 5: Access the Application
-- **User Feedback Form**: http://localhost:5000
-- **Admin Dashboard**: http://localhost:5000/admin
-- **API Base URL**: http://localhost:5000/api
+- **User Feedback Form**: http://localhost:5008
+- **Admin Dashboard**: http://localhost:5008/admin
+- **API Base URL**: http://localhost:5008/api
 
 ---
 
@@ -95,7 +95,7 @@ npm start
 
 #### 1. Admin Registration
 - **Method**: POST
-- **URL**: http://localhost:5000/api/auth/register
+- **URL**: http://localhost:5008/api/auth/register
 - **Headers**: 
   - `Content-Type: application/json`
 - **Body** (JSON):
@@ -110,7 +110,7 @@ npm start
 
 #### 2. Admin Login
 - **Method**: POST
-- **URL**: http://localhost:5000/api/auth/login
+- **URL**: http://localhost:5008/api/auth/login
 - **Headers**: 
   - `Content-Type: application/json`
 - **Body** (JSON):
@@ -124,7 +124,7 @@ npm start
 
 #### 3. Submit Feedback (No Auth Required)
 - **Method**: POST
-- **URL**: http://localhost:5000/api/feedback/submit
+- **URL**: http://localhost:5008/api/feedback/submit
 - **Headers**: 
   - `Content-Type: application/json`
 - **Body** (JSON):
@@ -141,14 +141,14 @@ npm start
 
 #### 4. Get All Feedback (Admin Only)
 - **Method**: GET
-- **URL**: http://localhost:5000/api/feedback
+- **URL**: http://localhost:5008/api/feedback
 - **Headers**: 
   - `Authorization: Bearer <your_jwt_token_here>`
 - **Expected Response**: 200 OK with feedback list
 
 #### 5. Update Feedback Status (Admin Only)
 - **Method**: PATCH
-- **URL**: http://localhost:5000/api/feedback/<feedback_id>
+- **URL**: http://localhost:5008/api/feedback/<feedback_id>
 - **Headers**: 
   - `Authorization: Bearer <your_jwt_token_here>`
   - `Content-Type: application/json`
@@ -162,14 +162,14 @@ npm start
 
 #### 6. Get Analytics (Admin Only)
 - **Method**: GET
-- **URL**: http://localhost:5000/api/feedback/analytics
+- **URL**: http://localhost:5008/api/feedback/analytics
 - **Headers**: 
   - `Authorization: Bearer <your_jwt_token_here>`
 - **Expected Response**: 200 OK with analytics data
 
 ### Testing with Browser
-- Navigate to http://localhost:5000 for the feedback form
-- Navigate to http://localhost:5000/admin for the admin dashboard
+- Navigate to http://localhost:5008 for the feedback form
+- Navigate to http://localhost:5008/admin for the admin dashboard
 - Use the admin credentials to log in and manage feedback
 
 ---
@@ -193,7 +193,7 @@ npm start
 
 **Error**: `Error: listen EADDRINUSE: address already in use :::5000`
 **Fix**:
-1. Change the PORT in .env file to another port (e.g., 5001)
+1. Change the PORT in .env file to another port (e.g., 5009)
 2. Or kill the process using port 5000:
    - **Windows**: `netstat -ano | findstr :5000` then `taskkill /PID <PID> /F`
    - **macOS/Linux**: `lsof -i :5000` then `kill -9 <PID>`

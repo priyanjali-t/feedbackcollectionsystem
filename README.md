@@ -43,7 +43,7 @@ A complete feedback collection system with admin dashboard built using Node.js, 
    - Rename `.env.example` to `.env` if it exists, OR
    - Update the `.env` file with your custom settings:
      ```env
-     PORT=5000
+     PORT=5008
      MONGODB_URI=mongodb://localhost:27017/feedback_system
      JWT_SECRET=your_secure_jwt_secret_here
      ADMIN_USERNAME=admin
@@ -65,7 +65,7 @@ npm run dev
 npm start
 ```
 
-The application will start on `http://localhost:5000` by default.
+The application will start on `http://localhost:5008` by default.
 
 ## Default Admin Credentials
 
@@ -74,6 +74,8 @@ After the first run, the system creates a default admin user:
 - **Password**: `admin123`
 
 **Important**: Change the default password immediately after first login for security.
+
+**Default Port**: The application runs on port 5008 by default.
 
 ## Project Structure
 
@@ -123,12 +125,12 @@ FEEDBACK COLLECTION SYSTEM/
 ## Usage
 
 ### For Users
-1. Visit `http://localhost:5000`
+1. Visit `http://localhost:5008`
 2. Fill out the feedback form with your name, email, category, rating, and message
 3. Submit the form to send your feedback
 
 ### For Admins
-1. Visit `http://localhost:5000/admin`
+1. Visit `http://localhost:5008/admin`
 2. Log in with your admin credentials
 3. View, filter, and manage feedback
 4. Use moderation tools to approve, reject, or delete feedback
