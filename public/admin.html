@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Feedback Collection System</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="login-header">
+                <h2>Admin Login</h2>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div id="loginMessage" class="message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Admin Dashboard</h1>
+                <div class="header-actions">
+                    <span id="adminName">Admin</span>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <!-- Analytics Section -->
+            <section class="analytics-section">
+                <h2>Dashboard Statistics</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Total Feedback</h3>
+                        <div class="analytics-value" id="totalFeedback">0</div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Average Rating</h3>
+                        <div class="analytics-value" id="avgRating">0.0</div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Pending</h3>
+                        <div class="analytics-value" id="pendingCount">0</div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Approved</h3>
+                        <div class="analytics-value" id="approvedCount">0</div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Rejected</h3>
+                        <div class="analytics-value" id="rejectedCount">0</div>
+                    </div>
+                </div>
+                
+                <!-- Category Distribution Chart -->
+                <div class="category-chart-section">
+                    <h3>Category Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feedback Management Section -->
+            <section class="feedback-section">
+                <div class="section-header">
+                    <h2>Feedback Management</h2>
+                    <div class="action-buttons">
+                        <button id="exportBtn" class="export-btn" title="Export to CSV">
+                            📥 Export CSV
+                        </button>
+                        <button id="notifyBtn" class="notify-btn" title="Enable browser notifications">
+                            🔔 Enable Notifications
+                        </button>
+                    </div>
+                </div>
+                <div class="filters-container">
+                    <div class="filters">
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="General">General</option>
+                            <option value="Technical">Technical</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Support">Support</option>
+                            <option value="Billing">Billing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input type="text" id="searchInput" placeholder="Search feedback..." class="search-input">
+                        <button id="applyFilters" class="filter-btn">Apply Filters</button>
+                    </div>
+                </div>
+
+                <div class="feedback-table-container">
+                    <table class="feedback-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Category</th>
+                                <th>Rating</th>
+                                <th>Message</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feedbackTableBody">
+                            <!-- Feedback items will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button id="prevPage" class="pagination-btn" disabled>Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button id="nextPage" class="pagination-btn">Next</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
