@@ -14,7 +14,7 @@ const authRoutes = require('./routes/auth');
 const { seedAdmin } = require('./config/seedAdmin');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5008;
 
 // Security middleware
 app.use(helmet({
@@ -144,8 +144,7 @@ app.use('*', (req, res) => {
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-})
-.then(() => {
+}).then(() => {
   console.log('Connected to MongoDB');
   // Seed admin user if doesn't exist
   seedAdmin();
@@ -155,4 +154,5 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
 .catch((error) => {
   console.error('Error connecting to MongoDB:', error);
+  process.exit(1); // Exit the process if DB connection fails
 });
