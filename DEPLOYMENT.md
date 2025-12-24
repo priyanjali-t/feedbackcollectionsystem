@@ -139,7 +139,19 @@ vercel login
 vercel --env NODE_ENV=production --env MONGODB_URI=your_mongo_uri --env JWT_SECRET=your_secret
 ```
 
-### **Option 4: DigitalOcean App Platform**
+### **Option 4: Render (Recommended)**
+
+1. **Create Render account** at https://render.com
+2. **Connect your GitHub repository** `priyanjali-t/feedbackcollectionsystem`
+3. **Set environment variables in the dashboard**:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string
+   - `JWT_SECRET`: A strong, random secret key
+   - `ADMIN_USERNAME`: Your admin username
+   - `ADMIN_PASSWORD`: Your admin password
+   - `NODE_ENV`: production
+4. **Deploy automatically on push to main branch**
+
+### **Option 5: DigitalOcean App Platform**
 
 1. **Create DigitalOcean account**
 2. **Connect your GitHub repository**

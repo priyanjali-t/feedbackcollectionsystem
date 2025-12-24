@@ -33,7 +33,11 @@ app.use(helmet({
 
 // Configure CORS with specific settings for security
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : ['http://localhost:3000', 'http://localhost:5000'],
+  origin: process.env.ALLOWED_ORIGINS ? 
+    process.env.ALLOWED_ORIGINS.split(',') : 
+    process.env.NODE_ENV === 'production' ?
+      [process.env.PRODUCTION_URL || 'https://your-app-name.onrender.com'] : // Replace with your actual production URL
+      ['http://localhost:3000', 'http://localhost:5000'],
   credentials: true,
   optionsSuccessStatus: 200
 }));
