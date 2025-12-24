@@ -145,7 +145,9 @@ app.use('*', (req, res) => {
 });
 
 // Connect to MongoDB and start server
-mongoose.connect(process.env.MONGODB_URI, {
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/feedback_system';
+
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
@@ -158,5 +160,6 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
 .catch((error) => {
   console.error('Error connecting to MongoDB:', error);
+  console.error('Make sure MongoDB is running locally or set MONGODB_URI environment variable');
   process.exit(1); // Exit the process if DB connection fails
 });

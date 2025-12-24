@@ -15,8 +15,11 @@ NODE_ENV=production
 # Server configuration
 PORT=8080  # Use 80 for HTTP, 443 for HTTPS in production
 
-# Database (use MongoDB Atlas for cloud deployment)
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/feedback_system?retryWrites=true&w=majority
+# Database (use MongoDB Atlas for cloud deployment or local MongoDB)
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/feedback_system?retryWrites=true&w=majority # For MongoDB Atlas
+# Alternative: MONGODB_URI=mongodb://localhost:27017/feedback_system # For local MongoDB
+
+# If MONGODB_URI is not set, the app will default to: mongodb://localhost:27017/feedback_system
 
 # Security
 JWT_SECRET=your_very_secure_production_secret_key_here_change_this_to_a_long_random_string_for_production
